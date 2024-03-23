@@ -25,3 +25,6 @@ dist-ssr
 
 # Built files
 build/
+
+# Secret
+.clasp.json
