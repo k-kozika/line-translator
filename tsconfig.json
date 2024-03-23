@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "lib": ["esnext", "ES2019"],
+    "target": "ES2019",
+    "experimentalDecorators": true,
+    "moduleResolution": "Bundler",
+    "forceConsistentCasingInFileNames": false,
+  },
+  "exclude": ["build/**"]
+}
