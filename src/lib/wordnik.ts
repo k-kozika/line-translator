@@ -31,6 +31,7 @@ export const getDefinitions = (word: string) => {
       examples: value.exampleUses.map((example) =>
         htmlLikeToString(example.text ?? "")
       ),
+      word: value.word
     }));
 };
 

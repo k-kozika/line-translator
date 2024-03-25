@@ -19,6 +19,7 @@ export const definitionHandler: Handler = async (event, next) => {
     } catch {
       definitions = getDefinitions(text.toLowerCase());
     }
+
     const bubbles = definitions.map((definition) => ({
       type: "bubble",
       header: {
@@ -27,7 +28,7 @@ export const definitionHandler: Handler = async (event, next) => {
         contents: [
           {
             type: "text",
-            text: text,
+            text: definition.word,
             size: "lg",
             weight: "bold",
             style: "normal",
@@ -98,7 +99,7 @@ export const definitionHandler: Handler = async (event, next) => {
             contents: [
               {
                 type: "span",
-                text: `${text} - `,
+                text: `${definitions[0].word} - `,
                 style: "italic",
               },
               {
@@ -119,7 +120,10 @@ export const definitionHandler: Handler = async (event, next) => {
             action: {
               type: "postback",
               label: "発音を聞く",
-              data: JSON.stringify({ func: "audio", text: text }),
+              data: JSON.stringify({
+                func: "audio",
+                text: definitions[0].word,
+              }),
               displayText: "発音をリクエストしました",
             },
             style: "secondary",
@@ -129,7 +133,7 @@ export const definitionHandler: Handler = async (event, next) => {
             action: {
               type: "uri",
               label: "Wordnikでもっと見る",
-              uri: `https://www.wordnik.com/words/${text}`,
+              uri: `https://www.wordnik.com/words/${definitions[0].word}`,
             },
             style: "link",
           },
