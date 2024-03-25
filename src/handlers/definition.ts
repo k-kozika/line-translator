@@ -13,7 +13,12 @@ export const definitionHandler: Handler = async (event, next) => {
   if (!translated.isEng) return next();
 
   try {
-    const definitions = getDefinitions(text);
+    let definitions;
+    try {
+      definitions = getDefinitions(text);
+    } catch {
+      definitions = getDefinitions(text.toLowerCase());
+    }
     const bubbles = definitions.map((definition) => ({
       type: "bubble",
       header: {
