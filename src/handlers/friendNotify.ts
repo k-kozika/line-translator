@@ -7,7 +7,7 @@ export const friendNotifier: Handler = async (event, next) => {
 
   let payload = {} as {
     message: string;
-    imageFile?: GoogleAppsScript.Base.Blob;
+    imageFullsize?: string
   };
   const type =
     event.type === "follow"
@@ -26,9 +26,6 @@ export const friendNotifier: Handler = async (event, next) => {
           profile.language ?? "不明"
         }`
       );
-
-      profile.pictureUrl &&
-        (payload.imageFile = UrlFetchApp.fetch(profile.pictureUrl).getBlob());
     } catch {
       profileInfo.push(`ユーザーの情報取得に失敗しました`);
     }
