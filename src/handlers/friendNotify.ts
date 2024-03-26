@@ -5,6 +5,10 @@ import { getProfile } from "../lib/line";
 export const friendNotifier: Handler = async (event, next) => {
   if (event.type !== "follow" && event.type !== "unfollow") return next();
 
+  let payload = {} as {
+    message: string;
+    imageFile?: GoogleAppsScript.Base.Blob;
+  };
   const type =
     event.type === "follow"
       ? event.follow.isUnblocked
@@ -22,17 +26,20 @@ export const friendNotifier: Handler = async (event, next) => {
           profile.language ?? "不明"
         }`
       );
+
+      profile.pictureUrl &&
+        (payload.imageFile = UrlFetchApp.fetch(profile.pictureUrl).getBlob());
     } catch {
       profileInfo.push(`ユーザーの情報取得に失敗しました`);
     }
   }
 
+  payload.message = `${type}されました\n${profileInfo.join("\n")}`;
+
   UrlFetchApp.fetch("https://notify-api.line.me/api/notify", {
     headers: {
-      "Authorization": `Bearer ${LINE_NOTIFY_TOKEN}`
+      Authorization: `Bearer ${LINE_NOTIFY_TOKEN}`,
     },
-    payload: {
-        message: `${type}されました\n${profileInfo.join("\n")}`
-    }
+    payload,
   });
 };
