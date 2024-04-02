@@ -5,6 +5,14 @@ import { urlTranslator } from "./urlTranslator";
 import { pronounceAudio } from "./pronounceAudio";
 import { friendNotifier } from "./friendNotify";
 import { definitionHandler } from "./definition";
+import { messageNotifier } from "./messageNotify";
 
 export type Handler = Middleware<webhook.Event>;
-export const handlers: Handler[] = [pronounceAudio, friendNotifier, definitionHandler, urlTranslator, translator];
+export const handlers: Handler[] = [
+  messageNotifier,
+  pronounceAudio,
+  friendNotifier,
+  definitionHandler,
+  urlTranslator,
+  translator,
+];
