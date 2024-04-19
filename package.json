@@ -15,17 +15,17 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.24.3",
     "@babel/preset-typescript": "^7.24.1",
-    "@line/bot-sdk": "^9.0.3",
+    "@line/bot-sdk": "^9.2.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/cheerio": "^0.22.35",
-    "@types/google-apps-script": "^1.0.82",
+    "@types/google-apps-script": "^1.0.83",
     "clasp": "^1.0.0",
-    "rollup": "^4.13.0",
+    "rollup": "^4.14.3",
     "rollup-plugin-uglify": "^6.0.4",
     "ts2gas": "^4.2.0",
     "tslib": "^2.6.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.5"
   }
 }
