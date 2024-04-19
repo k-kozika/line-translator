@@ -3,7 +3,8 @@ import { LINE_NOTIFY_TOKEN } from "../const";
 import { getProfile } from "../lib/line";
 
 export const friendNotifier: Handler = async (event, next) => {
-  if (event.type !== "follow" && event.type !== "unfollow") return next();
+  next();
+  if (event.type !== "follow" && event.type !== "unfollow") return;
 
   let payload = {} as {
     message: string;
