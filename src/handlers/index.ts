@@ -10,6 +10,7 @@ import { groupNotifier } from "./groupNotify";
 import { groupGreet } from "./groupGreet";
 import { groupLeave } from "./groupLeave";
 import { groupNotice } from "./groupNotice";
+import { synonymHandler } from "./synonym";
 
 export type Handler = Middleware<webhook.Event>;
 export const handlers: Handler[] = [
@@ -20,6 +21,7 @@ export const handlers: Handler[] = [
   friendNotifier,
   groupNotifier,
   groupLeave,
+  synonymHandler,
   definitionHandler,
   urlTranslator,
   translator,

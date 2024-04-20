@@ -31,7 +31,7 @@ export const getDefinitions = (word: string) => {
       examples: value.exampleUses.map((example) =>
         htmlLikeToString(example.text ?? "")
       ),
-      word: value.word
+      word: value.word,
     }));
 };
 
@@ -56,9 +56,11 @@ export const getRelatedWords = (word: string) => {
     UrlFetchApp.fetch(
       `${WORDNIK_ENDPOINT_BASE}/word.json/${encodeURI(
         word
-      )}/relatedWords?useCanonical=true&limitPerRelationshipType=6&api_key=${WORDNIK_API_KEY}`
+      )}/relatedWords?useCanonical=true&relationshipTypes=synonym&api_key=${WORDNIK_API_KEY}`
     ).getContentText()
-  );
+  )
+    .map((relation) => relation.words)
+    .flat();
 
   return res;
 };
