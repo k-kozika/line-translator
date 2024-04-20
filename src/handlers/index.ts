@@ -15,11 +15,11 @@ export type Handler = Middleware<webhook.Event>;
 export const handlers: Handler[] = [
   messageNotifier,
   pronounceAudio,
-  groupLeave,
   groupGreet,
   groupNotice,
   friendNotifier,
   groupNotifier,
+  groupLeave,
   definitionHandler,
   urlTranslator,
   translator,
