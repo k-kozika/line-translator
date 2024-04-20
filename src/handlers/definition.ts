@@ -1,16 +1,19 @@
 import type { Handler } from ".";
-import { getTextFromEvent, reply } from "../lib/line";
+import { getTextFromEvent, reply, sendLoader } from "../lib/line";
 import { translate } from "../lib/translator";
 import { getDefinitions } from "../lib/wordnik";
 
 export const definitionHandler: Handler = async (event, next) => {
   if (event.type !== "message") return next();
   if (event.message.type !== "text") return next();
+  if(event.source.type !== "user") return next();
 
   const text = getTextFromEvent(event);
 
   const translated = translate(text);
   if (!translated.isEng) return next();
+
+  sendLoader(event.source.userId);
 
   try {
     let definitions;

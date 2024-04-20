@@ -39,3 +39,43 @@ export const getProfile = (userId: string) => {
     }).getContentText()
   );
 };
+
+export const sendLoader = (userId: string, dur: number = 60): number => {
+  const data = {
+    chatId: userId,
+    loadingSeconds: dur,
+  };
+  return JSON.parse(
+    UrlFetchApp.fetch(`${LINE_ENDPOINT_BASE}/chat/loading/start`, {
+      method: "post",
+      contentType: "application/json",
+      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+      payload: JSON.stringify(data),
+    }).getContentText()
+  ).count;
+};
+
+export const countMembersInGroup = (groupId: string): number => {
+  return JSON.parse(
+    UrlFetchApp.fetch(`${LINE_ENDPOINT_BASE}/group/${groupId}/members/count`, {
+      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+    }).getContentText()
+  ).count;
+};
+
+export const leaveGroup = (groupId: string) => {
+  return (
+    UrlFetchApp.fetch(`${LINE_ENDPOINT_BASE}/group/${groupId}/leave`, {
+      method: "post",
+      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+    }).getResponseCode() === 200
+  );
+};
+
+export const getGroupSummary = (groupId: string) => {
+  return JSON.parse(
+    UrlFetchApp.fetch(`${LINE_ENDPOINT_BASE}/group/${groupId}/summary`, {
+      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+    }).getContentText()
+  );
+};
