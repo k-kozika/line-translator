@@ -1,12 +1,15 @@
 import type { Handler } from ".";
-import { reply } from "../lib/line";
+import { reply, sendLoader } from "../lib/line";
 import { getAudio } from "../lib/wordnik";
 
 export const pronounceAudio: Handler = async (event, next) => {
   if (event.type !== "postback") return next();
+  if(event.source.type !== "user") return next();
 
   const dataParsed = JSON.parse(event.postback.data);
   if (dataParsed.func !== "audio") return next();
+
+  sendLoader(event.source.userId);
 
   try {
     const audio = getAudio(dataParsed.text);
