@@ -21,8 +21,8 @@ export const handlers: Handler[] = [
   friendNotifier,
   groupNotifier,
   groupLeave,
-  synonymHandler,
   definitionHandler,
+  synonymHandler,
   urlTranslator,
   translator,
 ];
