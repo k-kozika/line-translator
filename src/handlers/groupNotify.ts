@@ -1,6 +1,6 @@
 import type { Handler } from ".";
 import { LINE_NOTIFY_TOKEN } from "../const";
-import { countMembersInGroup, getProfile } from "../lib/line";
+import { countMembersInGroup, getGroupSummary } from "../lib/line";
 
 export const groupNotifier: Handler = async (event, next) => {
   next();
@@ -15,7 +15,7 @@ export const groupNotifier: Handler = async (event, next) => {
   if (event.source.type === "group") {
     profileInfo.push(`グループId: ${event.source.groupId}`);
     try {
-      const summary = getProfile(event.source.userId);
+      const summary = getGroupSummary(event.source.groupId);
       profileInfo.push(`グループ名: ${summary.groupName}`);
       const count = countMembersInGroup(event.source.groupId);
       profileInfo.push(`アカウントを除く人数: ${count}`);
