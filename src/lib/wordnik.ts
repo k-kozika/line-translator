@@ -62,5 +62,5 @@ export const getRelatedWords = (word: string) => {
     .map((relation) => relation.words)
     .flat();
 
-  return res;
+  return [...new Set(res)];
 };
