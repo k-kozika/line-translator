@@ -63,6 +63,14 @@ export const synonymHandler: Handler = async (event, next) => {
               },
             ],
           },
+          {
+            type: "button",
+            action: {
+              type: "message",
+              label: `${translated.res}の意味を調べる`,
+              text: translated.res,
+            },
+          },
           ...relatedWords.map((word) => ({
             type: "button",
             action: {
@@ -78,11 +86,13 @@ export const synonymHandler: Handler = async (event, next) => {
       },
     };
 
-    return reply(event.replyToken, [{
+    return reply(event.replyToken, [
+      {
         type: "flex",
         contents: flex,
-        altText: `${text} の同義`
-    }])
+        altText: `${text} の同義`,
+      },
+    ]);
   } catch {
     return next();
   }
