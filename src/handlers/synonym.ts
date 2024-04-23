@@ -71,7 +71,7 @@ export const synonymHandler: Handler = async (event, next) => {
               text: translated.res,
             },
           },
-          { type: "sseparator" },
+          { type: "separator" },
           ...relatedWords.map((word) => ({
             type: "button",
             action: {
