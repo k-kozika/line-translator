@@ -6,7 +6,7 @@ import { getDefinitions } from "../lib/wordnik";
 export const definitionHandler: Handler = async (event, next) => {
   if (event.type !== "message") return next();
   if (event.message.type !== "text") return next();
-  if(event.source.type !== "user") return next();
+  if (event.source.type !== "user") return next();
 
   const text = getTextFromEvent(event);
 
