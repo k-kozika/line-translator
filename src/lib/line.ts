@@ -8,9 +8,10 @@ export const getTextFromEvent = (event: webhook.Event): string => {
   return event.message.text;
 };
 
-export const createTextMessage = (text: string): messagingApi.TextMessage[] => {
+export const createTextMessage = (text: string, option?: Partial<messagingApi.TextMessage>): messagingApi.TextMessage[] => {
   return [
     {
+      ...option,
       type: "text",
       text: text,
     },
