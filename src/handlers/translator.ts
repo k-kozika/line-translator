@@ -26,7 +26,7 @@ export const translator: Handler = async (event, next) => {
       name: `${
         senderName.length <= 15 ? senderName : `${senderName.slice(0, 12)}...`
       } (${lang})`,
-      iconUrl: profile.pictureUrl,
+      // iconUrl: profile.pictureUrl,
     };
   }
   return reply(event.replyToken, createTextMessage(translated.res, option));
