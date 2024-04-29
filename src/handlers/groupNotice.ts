@@ -1,9 +1,12 @@
 import type { Handler } from ".";
 import { reply } from "../lib/line";
 
+let messageSent = false;
+
 export const groupNotice: Handler = async (event, next) => {
   next();
   if (event.type !== "memberJoined") return;
+  if (messageSent) return;
 
   reply(event.replyToken, [
     {
@@ -34,7 +37,8 @@ export const groupNotice: Handler = async (event, next) => {
           spacing: "md",
         },
       },
-      altText: "はじめにご確認ください"
+      altText: "はじめにご確認ください",
     },
   ]);
+  messageSent = true;
 };
