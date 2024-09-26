@@ -1,11 +1,10 @@
 import type { webhook } from "@line/bot-sdk";
-import type { Middleware } from "../lib/middlewaresystem";
+import type { Middleware } from "../lib/middlewareSystem";
 import { translator } from "./translator";
 import { urlTranslator } from "./urlTranslator";
 import { pronounceAudio } from "./pronounceAudio";
 import { friendNotifier } from "./friendNotify";
 import { definitionHandler } from "./definition";
-import { messageNotifier } from "./messageNotify";
 import { groupNotifier } from "./groupNotify";
 import { groupGreet } from "./groupGreet";
 import { groupLeave } from "./groupLeave";
@@ -14,10 +13,10 @@ import { synonymHandler } from "./synonym";
 
 export type Handler = Middleware<webhook.Event>;
 export const handlers: Handler[] = [
-  messageNotifier,
+  // messageNotifier,
   pronounceAudio,
-  friendNotifier,
-  groupNotifier,
+  // friendNotifier,
+  // groupNotifier,
   groupGreet,
   groupNotice,
   groupLeave,
