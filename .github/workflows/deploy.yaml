@@ -32,4 +32,4 @@ jobs:
           DEPLOY_ID: ${{ secrets.DEPLOY_ID }}
       - name: Clean up credentials
         if: ${{ always() }}
-        run: rm $HOME/.clasprc.json
+        run: rm -f $HOME/.clasprc.json
