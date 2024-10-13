@@ -28,3 +28,5 @@ jobs:
           pnpm clasp deploy --deploymentId $DEPLOY_ID
         env:
           DEPLOY_ID: ${{ secrets.DEPLOY_ID }}
+      - name: Clean up credentials
+        run: rm $HOME/.clasprc.json
