@@ -22,7 +22,7 @@ jobs:
           AUTH_CREDENTIALS: ${{ secrets.AUTH_CREDENTIALS }}
       - name: Set up clasp
         run: |
-          echo "{\"script\":$SCRIPT_ID,\"rootDir\":\"$GITHUB_WORKSPACE\"}" > $GITHUB_WORKSPACE/.clasp.json
+          echo "{\"scriptId\":\"$SCRIPT_ID\",\"rootDir\":\"$GITHUB_WORKSPACE\"}" > $GITHUB_WORKSPACE/.clasp.json
         env:
           SCRIPT_ID: ${{ secrets.SCRIPT_ID }}
       - name: Install dependencies
