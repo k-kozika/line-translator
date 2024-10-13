@@ -20,6 +20,11 @@ jobs:
         run: echo "$AUTH_CREDENTIALS" > $HOME/.clasprc.json
         env:
           AUTH_CREDENTIALS: ${{ secrets.AUTH_CREDENTIALS }}
+      - name: Set up clasp
+        run: |
+          echo "{\"script\":$SCRIPT_ID,\"rootDir\":\"$(pwd)\"}" > .clasp.json
+        env:
+          SCRIPT_ID: ${{ secrets.SCRIPT_ID }}
       - name: Install dependencies
         run: pnpm install
       - name: Build and push
