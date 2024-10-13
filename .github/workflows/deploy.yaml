@@ -1,0 +1,30 @@
+on:
+  push:
+    branches:
+    - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: deploy to staging
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4.0.0
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.4
+      - name: Log into Google
+        run: echo "$AUTH_CREDENTIALS" > $HOME/.clasprc.json
+        env:
+          AUTH_CREDENTIALS: ${{ secrets.AUTH_CREDENTIALS }}
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build and push
+        run: pnpm run push
+      - name: Deploy new version
+        run: |
+          echo "::add-mask::$DEPLOY_ID"
+          pnpm clasp deploy --deploymentId $DEPLOY_ID
+        env:
+          DEPLOY_ID: ${{ secrets.DEPLOY_ID }}
