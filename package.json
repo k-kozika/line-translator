@@ -26,6 +26,6 @@
     "rollup-plugin-uglify": "^6.0.4",
     "ts2gas": "^4.2.0",
     "tslib": "^2.7.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.6.3"
   }
 }
