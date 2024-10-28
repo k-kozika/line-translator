@@ -15,8 +15,8 @@ importers:
         specifier: ^7.25.7
         version: 7.25.7(@babel/core@7.24.4)
       '@line/bot-sdk':
-        specifier: ^9.4.1
-        version: 9.4.1
+        specifier: ^9.4.2
+        version: 9.4.2
       '@rollup/plugin-babel':
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.24.4)(rollup@4.24.0)
@@ -252,8 +252,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@line/bot-sdk@9.4.1':
-    resolution: {integrity: sha512-5O/eLiFbH8QC+OfAJMwNYDRBwysFlMrtci+wub0HJHngHe+MF/b119YDWmlf67eFDdwjQayXk58ZLahNg4DEsw==}
+  '@line/bot-sdk@9.4.2':
+    resolution: {integrity: sha512-NBcuyUIF+Ssj8gBTmDiw7+Ay8CokSZ40olkI3gHv6nQ5ouWSAxfdtBu3lEBbsKPU+SkDEmQqsrFEEThXF0oLFg==}
     engines: {node: '>=18'}
 
   '@rollup/plugin-babel@6.0.4':
@@ -968,7 +968,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@line/bot-sdk@9.4.1':
+  '@line/bot-sdk@9.4.2':
     dependencies:
       '@types/node': 20.12.7
     optionalDependencies:
