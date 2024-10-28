@@ -22,7 +22,7 @@
     "@types/cheerio": "^0.22.35",
     "@types/google-apps-script": "^1.0.84",
     "clasp": "^1.0.0",
-    "rollup": "^4.24.0",
+    "rollup": "^4.24.2",
     "rollup-plugin-uglify": "^6.0.4",
     "ts2gas": "^4.2.0",
     "tslib": "^2.8.0",
