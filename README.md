@@ -7,9 +7,9 @@
 
 Dependabot pull requests and pull requests for additional features are welcome.  
 I will try to address issues related to problem-solving and bug fixes. However, new features will no longer be actively developed, and I will no longer fund the execution infrastructure.
+
 **Note:** If you run my bot, it may face rate limitations in the future due to lack of infrastructure support.
-
-
+____
 - [Key Features](#key-features)
 - [How To Use](#how-to-use)
 - [Credits](#credits)
