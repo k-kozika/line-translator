@@ -2,6 +2,13 @@
 <a data-v-6fa6a74a="" href="https://lin.ee/QnkEHJH5"><img data-v-6fa6a74a="" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a> [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/k-kozika/line-translator)](https://github.com/k-kozika/line-translator/issues)
 
 #### **A LINE Account for Translation Running on GAS**
+> [!WARNING]  
+> This repository is already in **maintenance mode**. There are a number of reasons for this, the biggest being that I wanted to *leave LINE*.
+
+Dependabot pull requests and pull requests for additional features are welcome.  
+I will try to address issues related to problem-solving and bug fixes. However, new features will no longer be actively developed, and I will no longer fund the execution infrastructure.
+**Note:** If you run my bot, it may face rate limitations in the future due to lack of infrastructure support.
+
 
 - [Key Features](#key-features)
 - [How To Use](#how-to-use)
