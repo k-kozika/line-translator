@@ -30,8 +30,8 @@ importers:
         specifier: ^0.22.35
         version: 0.22.35
       '@types/google-apps-script':
-        specifier: ^1.0.89
-        version: 1.0.89
+        specifier: ^1.0.91
+        version: 1.0.91
       clasp:
         specifier: ^1.0.0
         version: 1.0.0
@@ -392,8 +392,8 @@ packages:
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
-  '@types/google-apps-script@1.0.89':
-    resolution: {integrity: sha512-Vbvuyno3JnmFDwt4gOLSZKg3/EKLyViVhGqDt1oowY19M1x7Tl1sxOMSnAPdVGH5X/k2pcDWAh+poNaU8Jxwkw==}
+  '@types/google-apps-script@1.0.91':
+    resolution: {integrity: sha512-si93/GKuhaMPgbYUnGpU4jzqkid4+zxHi+Sm0IyGUJ/OPha5sM/hklGEyosSxsoE5Qkla3f7O64rJ05NdRQpJA==}
 
   '@types/node@20.12.7':
     resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
@@ -1044,7 +1044,7 @@ snapshots:
 
   '@types/estree@1.0.6': {}
 
-  '@types/google-apps-script@1.0.89': {}
+  '@types/google-apps-script@1.0.91': {}
 
   '@types/node@20.12.7':
     dependencies:

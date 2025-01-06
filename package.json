@@ -20,7 +20,7 @@
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/cheerio": "^0.22.35",
-    "@types/google-apps-script": "^1.0.89",
+    "@types/google-apps-script": "^1.0.91",
     "clasp": "^1.0.0",
     "rollup": "^4.29.1",
     "rollup-plugin-uglify": "^6.0.4",
