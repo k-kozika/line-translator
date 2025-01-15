@@ -14,7 +14,7 @@ function doPost(e: GoogleAppsScript.Events.DoPost) {
     const events = data.events;
 
     const engine = new Pipeline(...handlers);
-    await Promise.all(events.map((event) => engine.execute(event)));
+    await Promise.all(events.map((event) => engine.execute([event, []])));
   })();
 }
 

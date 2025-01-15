@@ -3,15 +3,14 @@ import { getTextFromEvent, reply, sendLoader } from "../lib/line";
 import { translate } from "../lib/translator";
 import { getRelatedWords } from "../lib/wordnik";
 
-export const synonymHandler: Handler = async (event, next) => {
+export const synonymHandler: Handler = async ([event, [translated, language]], next) => {
   if (event.type !== "message") return next();
   if (event.message.type !== "text") return next();
   if (event.source.type !== "user") return next();
 
   const text = getTextFromEvent(event);
 
-  const translated = translate(text);
-  if (translated.isEng) return next();
+  if (language !== "en") return next();
 
   sendLoader(event.source.userId);
 

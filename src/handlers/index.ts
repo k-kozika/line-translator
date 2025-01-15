@@ -10,8 +10,11 @@ import { groupGreet } from "./groupGreet";
 import { groupLeave } from "./groupLeave";
 import { groupNotice } from "./groupNotice";
 import { synonymHandler } from "./synonym";
+import { translationHandler } from "./translationHandler";
 
-export type Handler = Middleware<webhook.Event>;
+type LanguageType = "ja" | "en" | ""
+type TranslationCache = string[];
+export type Handler = Middleware<[webhook.Event, TranslationCache]>;
 export const handlers: Handler[] = [
   // messageNotifier,
   pronounceAudio,
@@ -20,6 +23,7 @@ export const handlers: Handler[] = [
   groupGreet,
   groupNotice,
   groupLeave,
+  translationHandler,
   definitionHandler,
   synonymHandler,
   urlTranslator,

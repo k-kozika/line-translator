@@ -1,7 +1,7 @@
 import type { Handler } from ".";
 import { countMembersInGroup, leaveGroup, reply } from "../lib/line";
 
-export const groupLeave: Handler = async (event, next) => {
+export const groupLeave: Handler = async ([event], next) => {
   next();
   if (event.type !== "memberLeft" || event.source.type !== "group") return;
 
