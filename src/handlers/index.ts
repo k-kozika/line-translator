@@ -12,7 +12,7 @@ import { groupNotice } from "./groupNotice";
 import { synonymHandler } from "./synonym";
 import { translationHandler } from "./translationHandler";
 
-type LanguageType = "ja" | "en" | ""
+type LanguageType = "ja" | "en" | "";
 type TranslationCache = string[];
 export type Handler = Middleware<[webhook.Event, TranslationCache]>;
 export const handlers: Handler[] = [
@@ -21,8 +21,8 @@ export const handlers: Handler[] = [
   // friendNotifier,
   // groupNotifier,
   groupGreet,
-  groupNotice,
   groupLeave,
+  groupNotice,
   translationHandler,
   definitionHandler,
   synonymHandler,

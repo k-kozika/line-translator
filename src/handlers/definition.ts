@@ -2,18 +2,21 @@ import type { Handler } from ".";
 import { getTextFromEvent, reply, sendLoader } from "../lib/line";
 import { getDefinitions } from "../lib/wordnik";
 
-export const definitionHandler: Handler = async ([event, [translation, lang]], next) => {
+export const definitionHandler: Handler = async (
+  [event, [translation, lang]],
+  next,
+) => {
   if (event.type !== "message") return next();
   if (event.message.type !== "text") return next();
   if (event.source.type !== "user") return next();
 
   const text = getTextFromEvent(event);
-  if(lang !== "en") return next();
+  if (lang !== "en") return next();
 
   sendLoader(event.source.userId);
 
   try {
-    let definitions;
+    let definitions: ReturnType<typeof getDefinitions>;
     try {
       definitions = getDefinitions(text);
     } catch {
@@ -63,9 +66,7 @@ export const definitionHandler: Handler = async ([event, [translation, lang]], n
           {
             type: "text",
             text:
-              definition.examples
-                .map((example) => `- ${example}`)
-                .join("\n") === ""
+              definition.examples.length === 0
                 ? "例文は見つかりませんでした"
                 : definition.examples
                     .map((example) => `- ${example}`)
