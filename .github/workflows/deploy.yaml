@@ -45,7 +45,7 @@ jobs:
           diff -q build/.build_hash build/.build_hash.current && echo "No changes in build output" && exit 0 || echo "Build output changed" && exit 1
       - name: Update build hash
         if: ${{ steps.check_diff.outcome == 'failure'}}
-        run: cp .build/.build_hash.current .build/.build_hash
+        run: cp build/.build_hash.current build/.build_hash
       - name: Push
         if: ${{ steps.check_diff.outcome == 'failure'}}
         run: pnpm run push
