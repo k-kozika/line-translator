@@ -2,7 +2,7 @@ import type { Handler } from ".";
 import { reply, sendLoader } from "../lib/line";
 import { getAudio } from "../lib/wordnik";
 
-export const pronounceAudio: Handler = async (event, next) => {
+export const pronounceAudio: Handler = async ([event], next) => {
   if (event.type !== "postback") return next();
   if(event.source.type !== "user") return next();
 

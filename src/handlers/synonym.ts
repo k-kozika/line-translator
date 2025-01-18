@@ -1,22 +1,23 @@
 import type { Handler } from ".";
 import { getTextFromEvent, reply, sendLoader } from "../lib/line";
-import { translate } from "../lib/translator";
 import { getRelatedWords } from "../lib/wordnik";
 
-export const synonymHandler: Handler = async (event, next) => {
+export const synonymHandler: Handler = async (
+  [event, [translated, language]],
+  next,
+) => {
   if (event.type !== "message") return next();
   if (event.message.type !== "text") return next();
   if (event.source.type !== "user") return next();
 
   const text = getTextFromEvent(event);
 
-  const translated = translate(text);
-  if (translated.isEng) return next();
+  if (language !== "en") return next();
 
   sendLoader(event.source.userId);
 
   try {
-    const relatedWords = getRelatedWords(translated.res);
+    const relatedWords = getRelatedWords(translated);
     const flex = {
       type: "bubble",
       body: {
@@ -31,7 +32,7 @@ export const synonymHandler: Handler = async (event, next) => {
               {
                 type: "span",
                 style: "italic",
-                text: translated.res,
+                text: translated,
               },
               {
                 type: "span",
@@ -58,7 +59,7 @@ export const synonymHandler: Handler = async (event, next) => {
               },
               {
                 type: "span",
-                text: translated.res,
+                text: translated,
                 weight: "bold",
               },
             ],
@@ -67,8 +68,8 @@ export const synonymHandler: Handler = async (event, next) => {
             type: "button",
             action: {
               type: "message",
-              label: `${translated.res}の意味を調べる`,
-              text: translated.res,
+              label: `${translated}の意味を調べる`,
+              text: translated,
             },
           },
           { type: "separator" },

@@ -3,7 +3,7 @@ import { reply } from "../lib/line";
 
 let messageSent = false;
 
-export const groupNotice: Handler = async (event, next) => {
+export const groupNotice: Handler = async ([event], next) => {
   next();
   if (event.type !== "memberJoined") return;
   if (messageSent) return;

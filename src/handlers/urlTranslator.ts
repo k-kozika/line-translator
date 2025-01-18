@@ -1,7 +1,7 @@
 import type { Handler } from ".";
 import { createTextMessage, getTextFromEvent, reply } from "../lib/line";
 
-export const urlTranslator: Handler = (event, next) => {
+export const urlTranslator: Handler = ([event], next) => {
   if (event.type !== "message") return next();
   if (event.message.type !== "text") return next();
 
