@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-    - master
+      - main
   workflow_dispatch:
 
 jobs:
@@ -27,9 +27,30 @@ jobs:
           SCRIPT_ID: ${{ secrets.SCRIPT_ID }}
       - name: Install dependencies
         run: pnpm install
-      - name: Build and push
+      - name: Build
+        run: pnpm run build
+      - name: Calculate hash of current build
+        run: tar -cf - ./build | sha256sum | cut -d' ' -f1 > ./build/.build_hash.current
+      - name: Cache build hash
+        uses: actions/cache@v3
+        with:
+          path: build/.build_hash
+          key: ${{ runner.os }}-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+      - name: Check if build output changed
+        id: check_diff
+        continue-on-error: true
+        run: |
+          diff -q build/.build_hash build/.build_hash.current && echo "No changes in build output" && exit 0 || echo "Build output changed" && exit 1
+      - name: Update build hash
+        if: ${{ steps.check_diff.outcome == 'failure'}}
+        run: cp .build/.build_hash.current .build/.build_hash
+      - name: Push
+        if: ${{ steps.check_diff.outcome == 'failure'}}
         run: pnpm run push
       - name: Deploy new version
+        if: ${{ steps.check_diff.outcome == 'failure'}}
         run: |
           echo "::add-mask::$DEPLOY_ID"
           pnpm clasp deploy --deploymentId $DEPLOY_ID
