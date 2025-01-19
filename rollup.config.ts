@@ -1,6 +1,6 @@
 import { babel } from "@rollup/plugin-babel";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
-import { uglify } from "rollup-plugin-uglify";
+import swc from "unplugin-swc";
 import ts2gas from "ts2gas";
 
 const extensions = [".ts", ".js"];
@@ -49,7 +49,9 @@ export default {
       presets: ["@babel/preset-typescript"],
       plugins: ["@babel/plugin-transform-runtime"],
     }),
-    uglify(),
+    swc.rollup({
+      minify: true,
+    }),
     // ts2gasTranfromerPlugin(),
-  ]
+  ],
 };
