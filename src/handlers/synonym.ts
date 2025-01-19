@@ -12,7 +12,7 @@ export const synonymHandler: Handler = async (
 
   const text = getTextFromEvent(event);
 
-  if (language !== "en") return next();
+  if (language !== "ja") return next();
 
   sendLoader(event.source.userId);
 
