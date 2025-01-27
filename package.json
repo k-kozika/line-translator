@@ -20,7 +20,7 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-typescript": "^12.1.2",
-    "@swc/core": "^1.10.7",
+    "@swc/core": "^1.10.11",
     "@types/cheerio": "^0.22.35",
     "@types/google-apps-script": "^1.0.91",
     "clasp": "^1.0.0",
