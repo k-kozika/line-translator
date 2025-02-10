@@ -22,7 +22,7 @@
     "@rollup/plugin-typescript": "^12.1.2",
     "@swc/core": "^1.10.15",
     "@types/cheerio": "^0.22.35",
-    "@types/google-apps-script": "^1.0.92",
+    "@types/google-apps-script": "^1.0.94",
     "clasp": "^1.0.0",
     "rollup": "^4.34.0",
     "ts2gas": "^4.2.0",
